@@ -3,6 +3,17 @@ package ejercicio1;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JToolBar;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.JFileChooser;
+import javax.swing.JTextPane;
 
 public class EditorDeTexto {
 
@@ -36,8 +47,120 @@ public class EditorDeTexto {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 837, 748);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 811, 22);
+		frame.getContentPane().add(menuBar);
+		
+		JMenu mnFichero = new JMenu("Fichero");
+		menuBar.add(mnFichero);
+		
+		JMenuItem mntmNuevo = new JMenuItem("Nuevo");
+		mnFichero.add(mntmNuevo);
+		
+		// limpiar JTextArea
+		//crear un fichero nuevo en el que se graba lo que aparece en JTextArea
+		
+		JMenuItem mntmAbrir = new JMenuItem("Abrir");
+		mnFichero.add(mntmAbrir);
+		
+		//Abrir la ventana JFileChooser y escoger el archivo
+		
+		JMenuItem mntmGuardar = new JMenuItem("Guardar");
+		mnFichero.add(mntmGuardar);
+		
+		//Guardar el contenido de JTextArea en el fichero abierto
+		
+		JMenuItem mntmGuardarComo = new JMenuItem("GuardarComo");
+		mnFichero.add(mntmGuardarComo);
+		
+		//Abrir una ventana JFileChooser donde escribir un nombre de archivo nuevo
+		
+		JMenu mnEditor = new JMenu("Editor");
+		menuBar.add(mnEditor);
+		
+		JMenu mnSeleccionarFuente = new JMenu("SeleccionarFuente");
+		mnEditor.add(mnSeleccionarFuente);
+		
+		//seleccionar una de las tres fuentes de las opciones
+		
+		JMenuItem mntmCalibri = new JMenuItem("Calibri");
+		mntmCalibri.setFont(new Font("Calibri", Font.PLAIN, 12));
+		mnSeleccionarFuente.add(mntmCalibri);
+		
+		//cambiar la fuente por la Calibri
+		
+		JMenuItem mntmArial = new JMenuItem("Arial");
+		mntmArial.setFont(new Font("Arial", Font.PLAIN, 12));
+		mnSeleccionarFuente.add(mntmArial);
+		
+		//cambiar la propiedad fuente por la fuente Arial
+		
+		JMenuItem mntmCentury = new JMenuItem("Century");
+		mntmCentury.setFont(new Font("Century", Font.PLAIN, 12));
+		mnSeleccionarFuente.add(mntmCentury);
+		
+		//cambiar la propiedad fuente por la fuente Century
+		
+		
+		
+		
+		JMenuItem mntmCortar = new JMenuItem("Cortar");
+		mnEditor.add(mntmCortar);
+		
+		// con el texto seleccionado -- borrarlo de JTextArea y guardarlo en memoria
+		
+		JMenuItem mntmCopiar = new JMenuItem("Copiar");
+		mnEditor.add(mntmCopiar);
+		
+		//  con el texto seleccionado --  guardarlo en memoria
+		
+		JMenuItem mntmPegar = new JMenuItem("Pegar");
+		mnEditor.add(mntmPegar);
+		
+		JToolBar toolBar = new JToolBar();
+		toolBar.setFloatable(false);
+		toolBar.setBounds(10, 33, 740, 34);
+		frame.getContentPane().add(toolBar);
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		toolBar.add(panel);
+		
+		JMenuItem mntmTbGuardar = new JMenuItem("Guardar");
+		mntmTbGuardar.setBounds(100, 0, 79, 32);
+		panel.add(mntmTbGuardar);
+		
+		//Guardar el contenido de JTextArea en el fichero abierto
+		
+		JMenuItem mntmTbVCortar = new JMenuItem("Cortar");
+		mntmTbVCortar.setBounds(222, 0, 79, 32);
+		panel.add(mntmTbVCortar);
+		
+		// con el texto seleccionado -- borrarlo de JTextArea y guardarlo en memoria
+		
+		JMenuItem mntmTbCopiar = new JMenuItem("Copiar");
+		mntmTbCopiar.setBounds(322, 0, 79, 32);
+		panel.add(mntmTbCopiar);
+		
+		//  con el texto seleccionado --  guardarlo en memoria
+		
+		JMenuItem mntmTbNuevo = new JMenuItem("Nuevo");
+		mntmTbNuevo.setHorizontalAlignment(SwingConstants.LEFT);
+		mntmTbNuevo.setBounds(10, 0, 86, 32);
+		panel.add(mntmTbNuevo);
+		
+		// limpiar JTextArea
+				//crear un fichero nuevo en el que se graba lo que aparece en JTextArea
+		
+		JMenuItem mntmTbPegar = new JMenuItem("Pegar");
+		mntmTbPegar.setBounds(434, 0, 79, 32);
+		panel.add(mntmTbPegar);
+		
+		// copiar el texto guardado en memoria en la posicion del cursor
+		
 	}
-
 }
