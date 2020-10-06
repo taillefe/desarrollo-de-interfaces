@@ -7,6 +7,7 @@ import javax.swing.JTextArea;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 import javax.swing.ImageIcon;
 import java.awt.Font;
@@ -14,6 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.JFileChooser;
 import javax.swing.JTextPane;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class EditorDeTexto {
 
@@ -47,8 +52,18 @@ public class EditorDeTexto {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 837, 748);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			//evento que se ejecuta cuando cerramos la ventana
+			public void windowClosing(WindowEvent e) {
+				int res = JOptionPane.showConfirmDialog(null, "Cerrar?");
+				if (res==JFileChooser.APPROVE_OPTION) {
+					frame.dispose();
+				}
+			}
+		});
+		frame.setBounds(100, 100, 595, 485);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -65,14 +80,37 @@ public class EditorDeTexto {
 		//crear un fichero nuevo en el que se graba lo que aparece en JTextArea
 		
 		JMenuItem mntmAbrir = new JMenuItem("Abrir");
+		mntmAbrir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//  ventana abierta en un filechooser
+				JFileChooser ficheroEscogido = new JFileChooser();
+				ficheroEscogido.setBounds(0, 0, 497, 333);
+				frame.getContentPane().add(ficheroEscogido);
+				
+				int valorDevuelto = ficheroEscogido.showOpenDialog(null);
+				
+				if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
+					fichero = (ficheroEscogido.getSelectedFile().getAbsolutePath());
+					
+				}
+				
+				
+				//Abrir la ventana JFileChooser y escoger el archivo
+				 VentanaEscogerFichero v =new VentanaEscogerFichero();
+				 frame.dispose();
+			}
+		});
 		mnFichero.add(mntmAbrir);
 		
-		//Abrir la ventana JFileChooser y escoger el archivo
+		
+		 
+		
 		
 		JMenuItem mntmGuardar = new JMenuItem("Guardar");
 		mnFichero.add(mntmGuardar);
 		
 		//Guardar el contenido de JTextArea en el fichero abierto
+		//cared.selectText para seleccionar el texto
 		
 		JMenuItem mntmGuardarComo = new JMenuItem("GuardarComo");
 		mnFichero.add(mntmGuardarComo);
