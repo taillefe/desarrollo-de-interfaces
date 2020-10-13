@@ -1,5 +1,6 @@
 package ejercicio1;
 
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -23,8 +24,12 @@ import java.awt.Color;
 
 public class EditorDeTexto {
 
-	private JFrame frame;
 
+	//definicion de variables
+		String ficheroAbrir;
+	
+	private JFrame frame;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -84,20 +89,33 @@ public class EditorDeTexto {
 		mntmAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//  ventana abierta en un filechooser
+				
+				frame = new JFrame();
+				frame.setBounds(100, 100, 513, 372);
+			//	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.getContentPane().setLayout(null);
+				
 				JFileChooser ficheroEscogido = new JFileChooser();
 				ficheroEscogido.setBounds(0, 0, 497, 333);
 				frame.getContentPane().add(ficheroEscogido);
 				
+	
+				
 				int valorDevuelto = ficheroEscogido.showOpenDialog(null);
 				
 				if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
-					//fichero = (ficheroEscogido.getSelectedFile().getAbsolutePath());
+					ficheroAbrir = (ficheroEscogido.getSelectedFile().getAbsolutePath());
+					System.out.println("fichero escogido : " +ficheroAbrir);
+					
+					areaDeTexto = UtilidadesEdicion.obtenerTexto(ficheroAbrir);
+					//leo el texto que hay en el fichero y lo escribo en la ventana en text area
+					
 					
 				}
 				
 				
-				//Abrir la ventana JFileChooser y escoger el archivo
-				 VentanaEscogerFichero v =new VentanaEscogerFichero();
+				//Abrir la ventana JFileChooser y escoger el archivo (esto sería en el caso de llamar a otra ventana)
+				// VentanaEscogerFichero v =new VentanaEscogerFichero();
 				 frame.dispose();
 			}
 		});
@@ -205,9 +223,9 @@ public class EditorDeTexto {
 		mntmTbPegar.setBounds(434, 0, 41, 32);
 		panel.add(mntmTbPegar);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(10, 78, 721, 419);
-		frame.getContentPane().add(textArea);
+		JTextArea AreaDeTexto = new JTextArea();
+		AreaDeTexto.setBounds(10, 78, 721, 419);
+		frame.getContentPane().add(AreaDeTexto);
 		
 		// copiar el texto guardado en memoria en la posicion del cursor
 		
