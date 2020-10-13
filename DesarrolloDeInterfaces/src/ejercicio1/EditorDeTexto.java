@@ -19,6 +19,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class EditorDeTexto {
 
@@ -62,12 +63,12 @@ public class EditorDeTexto {
 				}
 			}
 		});
-		frame.setBounds(100, 100, 595, 485);
+		frame.setBounds(100, 100, 757, 547);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 811, 22);
+		menuBar.setBounds(0, 0, 731, 22);
 		frame.getContentPane().add(menuBar);
 		
 		JMenu mnFichero = new JMenu("Fichero");
@@ -90,7 +91,7 @@ public class EditorDeTexto {
 				int valorDevuelto = ficheroEscogido.showOpenDialog(null);
 				
 				if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
-					fichero = (ficheroEscogido.getSelectedFile().getAbsolutePath());
+					//fichero = (ficheroEscogido.getSelectedFile().getAbsolutePath());
 					
 				}
 				
@@ -165,38 +166,48 @@ public class EditorDeTexto {
 		frame.getContentPane().add(toolBar);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.ORANGE);
 		panel.setLayout(null);
 		toolBar.add(panel);
 		
-		JMenuItem mntmTbGuardar = new JMenuItem("Guardar");
-		mntmTbGuardar.setBounds(100, 0, 79, 32);
+		JMenuItem mntmTbGuardar = new JMenuItem("");
+		mntmTbGuardar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\guardar_18.png"));
+		mntmTbGuardar.setBounds(100, 0, 41, 32);
 		panel.add(mntmTbGuardar);
 		
 		//Guardar el contenido de JTextArea en el fichero abierto
 		
-		JMenuItem mntmTbVCortar = new JMenuItem("Cortar");
-		mntmTbVCortar.setBounds(222, 0, 79, 32);
+		JMenuItem mntmTbVCortar = new JMenuItem("");
+		mntmTbVCortar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\cortar_18.jpg"));
+		mntmTbVCortar.setBounds(222, 0, 41, 32);
 		panel.add(mntmTbVCortar);
 		
 		// con el texto seleccionado -- borrarlo de JTextArea y guardarlo en memoria
 		
-		JMenuItem mntmTbCopiar = new JMenuItem("Copiar");
-		mntmTbCopiar.setBounds(322, 0, 79, 32);
+		JMenuItem mntmTbCopiar = new JMenuItem("");
+		mntmTbCopiar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\copiar_18.jpg"));
+		mntmTbCopiar.setBounds(322, 0, 41, 32);
 		panel.add(mntmTbCopiar);
 		
 		//  con el texto seleccionado --  guardarlo en memoria
 		
-		JMenuItem mntmTbNuevo = new JMenuItem("Nuevo");
+		JMenuItem mntmTbNuevo = new JMenuItem("");
+		mntmTbNuevo.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\nuevo_18.png"));
 		mntmTbNuevo.setHorizontalAlignment(SwingConstants.LEFT);
-		mntmTbNuevo.setBounds(10, 0, 86, 32);
+		mntmTbNuevo.setBounds(10, 0, 41, 32);
 		panel.add(mntmTbNuevo);
 		
 		// limpiar JTextArea
 				//crear un fichero nuevo en el que se graba lo que aparece en JTextArea
 		
-		JMenuItem mntmTbPegar = new JMenuItem("Pegar");
-		mntmTbPegar.setBounds(434, 0, 79, 32);
+		JMenuItem mntmTbPegar = new JMenuItem("");
+		mntmTbPegar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\pegar_18.jpg"));
+		mntmTbPegar.setBounds(434, 0, 41, 32);
 		panel.add(mntmTbPegar);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(10, 78, 721, 419);
+		frame.getContentPane().add(textArea);
 		
 		// copiar el texto guardado en memoria en la posicion del cursor
 		
