@@ -105,7 +105,7 @@ public class EditorDeTexto {
 				
 				if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
 					ficheroAbrir = (ficheroEscogido.getSelectedFile().getAbsolutePath());
-					System.out.println("fichero escogido : " +ficheroAbrir);
+					System.out.println("fichero escogido : " + ficheroAbrir);
 					
 					areaDeTexto.setText(UtilidadesEdicion.obtenerTexto(ficheroAbrir));
 					//leo el texto que hay en el fichero y lo escribo en la ventana en text area
@@ -115,15 +115,26 @@ public class EditorDeTexto {
 			}
 		});
 		mnFichero.add(mntmAbrir);
-		
-		
-		 
-		
+	
 		
 		JMenuItem mntmGuardar = new JMenuItem("Guardar");
+		mntmGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				//Guardar el contenido de JTextArea en el fichero abierto ficheroAbrir
+				String texto = areaDeTexto.getText();
+				
+				// texto lo guardamos en el fichero abierto
+				
+				UtilidadesEdicion.guardarFichero(ficheroAbrir, texto);
+				
+				
+			}
+		});
 		mnFichero.add(mntmGuardar);
 		
-		//Guardar el contenido de JTextArea en el fichero abierto
+		
+		
 		//cared.selectText para seleccionar el texto
 		
 		JMenuItem mntmGuardarComo = new JMenuItem("GuardarComo");

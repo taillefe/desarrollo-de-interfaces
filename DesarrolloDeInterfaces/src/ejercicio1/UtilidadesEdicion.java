@@ -34,9 +34,15 @@ public class UtilidadesEdicion {
 	}	
 	//en la interfaz con un actionPerformed  en el seleccionar texto envia un setText() desde el TextArea
 	
-	//leerFichero()
+	
 	
 	//escribirFichero()
+	public static void guardarFichero(String fichero, String texto) {
+		
+		// guarda el contenido de areaDeTexto(texto) en el ficheroAbrir(fichero)
+		
+		
+	}
 	
 	
 	
