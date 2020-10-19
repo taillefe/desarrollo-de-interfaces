@@ -87,6 +87,13 @@ public class EditorDeTexto {
 		menuBar.add(mnFichero);
 		
 		JMenuItem mntmNuevo = new JMenuItem("Nuevo");
+		mntmNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//aqui se abre un JTextArea nuevo 
+				
+				
+			}
+		});
 		mnFichero.add(mntmNuevo);
 		
 		// limpiar JTextArea
@@ -135,9 +142,17 @@ public class EditorDeTexto {
 		
 		
 		
-		//cared.selectText para seleccionar el texto
+	
 		
 		JMenuItem mntmGuardarComo = new JMenuItem("GuardarComo");
+		mntmGuardarComo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// Guardar el contenido de JTextArea en un fichero que elegimos con JFileChooser
+				
+				
+				
+			}
+		});
 		mnFichero.add(mntmGuardarComo);
 		
 		//Abrir una ventana JFileChooser donde escribir un nombre de archivo nuevo
@@ -151,18 +166,36 @@ public class EditorDeTexto {
 		//seleccionar una de las tres fuentes de las opciones
 		
 		JMenuItem mntmCalibri = new JMenuItem("Calibri");
+		mntmCalibri.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//elegimos funete Calibri
+				
+			}
+		});
 		mntmCalibri.setFont(new Font("Calibri", Font.PLAIN, 12));
 		mnSeleccionarFuente.add(mntmCalibri);
 		
 		//cambiar la fuente por la Calibri
 		
 		JMenuItem mntmArial = new JMenuItem("Arial");
+		mntmArial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// elegimos fuente Arial
+				
+			}
+		});
 		mntmArial.setFont(new Font("Arial", Font.PLAIN, 12));
 		mnSeleccionarFuente.add(mntmArial);
 		
 		//cambiar la propiedad fuente por la fuente Arial
 		
 		JMenuItem mntmCentury = new JMenuItem("Century");
+		mntmCentury.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//elegimos fuente Century
+				
+			}
+		});
 		mntmCentury.setFont(new Font("Century", Font.PLAIN, 12));
 		mnSeleccionarFuente.add(mntmCentury);
 		
@@ -172,16 +205,36 @@ public class EditorDeTexto {
 		
 		
 		JMenuItem mntmCortar = new JMenuItem("Cortar");
+		mntmCortar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				//primero seleccionamos texto para, despues de pulsar este boton, cortarlo, pero dejarlo en memoria
+				//cared.selectText para seleccionar el texto
+			}
+		});
 		mnEditor.add(mntmCortar);
 		
-		// con el texto seleccionado -- borrarlo de JTextArea y guardarlo en memoria
+		
 		
 		JMenuItem mntmCopiar = new JMenuItem("Copiar");
+		mntmCopiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				//guardar el texto seleccionardo en memoria
+				
+			}
+		});
 		mnEditor.add(mntmCopiar);
 		
-		//  con el texto seleccionado --  guardarlo en memoria
+		
 		
 		JMenuItem mntmPegar = new JMenuItem("Pegar");
+		mntmPegar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// copiar en JTextArea el texto guardado en memoria
+				
+			}
+		});
 		mnEditor.add(mntmPegar);
 		
 		JToolBar toolBar = new JToolBar();
@@ -195,27 +248,55 @@ public class EditorDeTexto {
 		toolBar.add(panel);
 		
 		JMenuItem mntmTbGuardar = new JMenuItem("");
+		mntmTbGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// hacer lo mismo que con la opción guardar
+				
+			}
+		});
 		mntmTbGuardar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\guardar_18.png"));
 		mntmTbGuardar.setBounds(100, 0, 41, 32);
 		panel.add(mntmTbGuardar);
 		
-		//Guardar el contenido de JTextArea en el fichero abierto
+	
 		
 		JMenuItem mntmTbVCortar = new JMenuItem("");
+		mntmTbVCortar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//hacer lo mismo que con la opción cortar
+				
+				
+			}
+		});
 		mntmTbVCortar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\cortar_18.jpg"));
 		mntmTbVCortar.setBounds(222, 0, 41, 32);
 		panel.add(mntmTbVCortar);
 		
-		// con el texto seleccionado -- borrarlo de JTextArea y guardarlo en memoria
+	
 		
 		JMenuItem mntmTbCopiar = new JMenuItem("");
+		mntmTbCopiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				// hacer lo mismo que con la opción copiar
+				
+			}
+		});
 		mntmTbCopiar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\copiar_18.jpg"));
 		mntmTbCopiar.setBounds(322, 0, 41, 32);
 		panel.add(mntmTbCopiar);
 		
-		//  con el texto seleccionado --  guardarlo en memoria
+		
 		
 		JMenuItem mntmTbNuevo = new JMenuItem("");
+		mntmTbNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//hacer lo mismo que con la opción nuevo
+				
+				
+				
+			}
+		});
 		mntmTbNuevo.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\nuevo_18.png"));
 		mntmTbNuevo.setHorizontalAlignment(SwingConstants.LEFT);
 		mntmTbNuevo.setBounds(10, 0, 41, 32);
@@ -225,6 +306,13 @@ public class EditorDeTexto {
 				//crear un fichero nuevo en el que se graba lo que aparece en JTextArea
 		
 		JMenuItem mntmTbPegar = new JMenuItem("");
+		mntmTbPegar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				// hacer lo mismo que con la opción pegar
+				
+			}
+		});
 		mntmTbPegar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\pegar_18.jpg"));
 		mntmTbPegar.setBounds(434, 0, 41, 32);
 		panel.add(mntmTbPegar);
