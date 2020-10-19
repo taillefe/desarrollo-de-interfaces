@@ -14,6 +14,8 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.JFileChooser;
 import javax.swing.JTextPane;
 import java.awt.event.WindowAdapter;
@@ -26,8 +28,9 @@ public class EditorDeTexto {
 
 
 	//definicion de variables
-		String ficheroAbrir;
+		String ficheroAbierto = ""; // la primera vez ficheroAbierto está vacío
 		private JTextArea areaDeTexto;
+		Boolean cambios = false;  // para controlar que ha habido cambios en el JTextArea
 	
 		
 		
@@ -89,7 +92,17 @@ public class EditorDeTexto {
 		JMenuItem mntmNuevo = new JMenuItem("Nuevo");
 		mntmNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//aqui se abre un JTextArea nuevo 
+				//aqui se abre un JTextArea nueva vacía y en ficheroAbierto borrar valor anterior 
+				//comprobar antes que no ha habido un cambio en la anterior pantalla que se deba guardar
+				if (cambios) {
+					// preguntar si queremos guardar los cambios con un guarda como
+					
+				}else {
+					
+				
+				areaDeTexto.setText("");
+				ficheroAbierto = "";
+				}
 				
 				
 			}
@@ -102,23 +115,29 @@ public class EditorDeTexto {
 		JMenuItem mntmAbrir = new JMenuItem("Abrir");
 		mntmAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//  ventana abierta en un filechooser
-			
-				
-				JFileChooser ficheroEscogido = new JFileChooser("C:\\Users\\PC33\\Desktop\\Prueba");
-				ficheroEscogido.setBounds(0, 0, 497, 333);
-	
-				int valorDevuelto = ficheroEscogido.showOpenDialog(null);
-				
-				if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
-					ficheroAbrir = (ficheroEscogido.getSelectedFile().getAbsolutePath());
-					System.out.println("fichero escogido : " + ficheroAbrir);
-					
-					areaDeTexto.setText(UtilidadesEdicion.obtenerTexto(ficheroAbrir));
-					//leo el texto que hay en el fichero y lo escribo en la ventana en text area
-			
-				}
 
+				//comprobar antes que no ha habido un cambio en la anterior pantalla que se deba guardar
+				if (cambios) {
+					//preguntar si queremos guardar los cambios
+					
+				}else {
+				
+				
+					//  ventana abierta en un filechooser
+					JFileChooser ficheroEscogido = new JFileChooser("C:\\Users\\PC33\\Desktop\\Prueba");
+					ficheroEscogido.setBounds(0, 0, 497, 333);
+		
+					int valorDevuelto = ficheroEscogido.showOpenDialog(null);
+					
+					if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
+						ficheroAbierto = (ficheroEscogido.getSelectedFile().getAbsolutePath());
+						System.out.println("fichero escogido : " + ficheroAbierto);
+						
+						areaDeTexto.setText(UtilidadesEdicion.obtenerTexto(ficheroAbierto));
+						//leo el texto que hay en el fichero y lo escribo en la ventana en text area
+						
+					}
+				}	
 			}
 		});
 		mnFichero.add(mntmAbrir);
@@ -128,34 +147,67 @@ public class EditorDeTexto {
 		mntmGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				//Guardar el contenido de JTextArea en el fichero abierto ficheroAbrir
-				String texto = areaDeTexto.getText();
 				
-				// texto lo guardamos en el fichero abierto
+				//Guardar el contenido de JTextArea en el ficheroAbierot, 
+				// en caso de no existir debemos llamar a guardarComo
+				if (ficheroAbierto.equals("")) {
+					// llamar a guardarComo
+					
+					JFileChooser ficheroEscogido = new JFileChooser("C:\\Users\\PC33\\Desktop\\Prueba");
+					ficheroEscogido.setBounds(0, 0, 497, 333);
+		
+					int valorDevuelto = ficheroEscogido.showOpenDialog(null);
+					
+					if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
+						ficheroAbierto = (ficheroEscogido.getSelectedFile().getAbsolutePath());
+						System.out.println("fichero escogido en guardar : " + ficheroAbierto);
+						
+						String texto = areaDeTexto.getText();
+						UtilidadesEdicion.guardarFichero(ficheroAbierto, texto);
+						cambios = false; // actualizar a false los cambios despues de hacer un guardado
+								
+					}
+				}else {
+					String texto = areaDeTexto.getText();
 				
-				UtilidadesEdicion.guardarFichero(ficheroAbrir, texto);
+					// texto lo guardamos en el fichero abierto
 				
+					UtilidadesEdicion.guardarFichero(ficheroAbierto, texto);
+					cambios = false;  // actualizar a false los cambios despues de hacer un guardado
+				}
 				
 			}
 		});
 		mnFichero.add(mntmGuardar);
 		
-		
-		
-	
+
 		
 		JMenuItem mntmGuardarComo = new JMenuItem("GuardarComo");
 		mntmGuardarComo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// Guardar el contenido de JTextArea en un fichero que elegimos con JFileChooser
+
+
+				JFileChooser ficheroEscogido = new JFileChooser("C:\\Users\\PC33\\Desktop\\Prueba");
+				ficheroEscogido.setBounds(0, 0, 497, 333);
+	
+				int valorDevuelto = ficheroEscogido.showOpenDialog(null);
 				
+				if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
+					ficheroAbierto = (ficheroEscogido.getSelectedFile().getAbsolutePath());
+					System.out.println("fichero escogido en guardarcomo : " + ficheroAbierto);
+					
+					String texto = areaDeTexto.getText();
+					UtilidadesEdicion.guardarFichero(ficheroAbierto, texto);
+					cambios = false;  // actualizar a false los cambios despues de hacer un guardado
+				}
 				
 				
 			}
 		});
 		mnFichero.add(mntmGuardarComo);
 		
-		//Abrir una ventana JFileChooser donde escribir un nombre de archivo nuevo
+	
 		
 		JMenu mnEditor = new JMenu("Editor");
 		menuBar.add(mnEditor);
@@ -318,6 +370,31 @@ public class EditorDeTexto {
 		panel.add(mntmTbPegar);
 		
 		areaDeTexto = new JTextArea();
+		// donde se crea la variable areaDeTexto como objeto de JTextArea se 
+		// abre un escuchador que en caso de borrado, insertado o cambio hace un
+		// cambio en la variable booleana cambios
+		
+		areaDeTexto.getDocument().addDocumentListener(new DocumentListener() {
+			
+			@Override
+			public void removeUpdate(DocumentEvent arg0) {
+				cambios = true;
+				
+			}
+			
+			@Override
+			public void insertUpdate(DocumentEvent arg0) {
+				cambios = true;
+				
+			}
+			
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				cambios = true;
+				
+			}
+		});
+		
 		areaDeTexto.setBounds(10, 78, 721, 419);
 		frame.getContentPane().add(areaDeTexto);
 		

@@ -1,7 +1,12 @@
 package ejercicio1;
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 
 public class UtilidadesEdicion {
 	
@@ -40,6 +45,27 @@ public class UtilidadesEdicion {
 	public static void guardarFichero(String fichero, String texto) {
 		
 		// guarda el contenido de areaDeTexto(texto) en el ficheroAbrir(fichero)
+		
+		// abro fichero para escribir para copiar el texto 
+				
+System.out.println ( "Texto : "+ texto);
+			try
+				{
+				FileWriter fw = new FileWriter(fichero);
+				//	FileOutputStream fos=new FileOutputStream(fichero);
+		
+				//	OutputStreamWriter osw = new OutputStreamWriter(fos, texto);
+		
+					fw.write(texto);
+
+					fw.close();
+			}catch(
+				IOException e)
+				{
+					 e.printStackTrace();
+
+				}
+			
 		
 		
 	}
