@@ -10,19 +10,23 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
+import javax.swing.ActionMap;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.DefaultEditorKit;
 import javax.swing.JFileChooser;
 import javax.swing.JTextPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.HashMap;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Desktop.Action;
 
 public class EditorDeTexto {
 
@@ -156,7 +160,7 @@ public class EditorDeTexto {
 					JFileChooser ficheroEscogido = new JFileChooser("C:\\Users\\PC33\\Desktop\\Prueba");
 					ficheroEscogido.setBounds(0, 0, 497, 333);
 		
-					int valorDevuelto = ficheroEscogido.showOpenDialog(null);
+					int valorDevuelto = ficheroEscogido.showSaveDialog(null);
 					
 					if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
 						ficheroAbierto = (ficheroEscogido.getSelectedFile().getAbsolutePath());
@@ -191,7 +195,7 @@ public class EditorDeTexto {
 				JFileChooser ficheroEscogido = new JFileChooser("C:\\Users\\PC33\\Desktop\\Prueba");
 				ficheroEscogido.setBounds(0, 0, 497, 333);
 	
-				int valorDevuelto = ficheroEscogido.showOpenDialog(null);
+				int valorDevuelto = ficheroEscogido.showSaveDialog(null);
 				
 				if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
 					ficheroAbierto = (ficheroEscogido.getSelectedFile().getAbsolutePath());
@@ -252,16 +256,15 @@ public class EditorDeTexto {
 		mnSeleccionarFuente.add(mntmCentury);
 		
 		//cambiar la propiedad fuente por la fuente Century
-		
-		
-		
-		
+	
 		JMenuItem mntmCortar = new JMenuItem("Cortar");
 		mntmCortar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				//primero seleccionamos texto para, despues de pulsar este boton, cortarlo, pero dejarlo en memoria
 				//cared.selectText para seleccionar el texto
+				// una forma mas facil es usar el portapapeles de windows para hace la accion cortar
+				areaDeTexto.cut();
 			}
 		});
 		mnEditor.add(mntmCortar);
@@ -273,7 +276,7 @@ public class EditorDeTexto {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				//guardar el texto seleccionardo en memoria
-				
+				areaDeTexto.copy();
 			}
 		});
 		mnEditor.add(mntmCopiar);
@@ -284,6 +287,7 @@ public class EditorDeTexto {
 		mntmPegar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// copiar en JTextArea el texto guardado en memoria
+				areaDeTexto.paste();
 				
 			}
 		});
