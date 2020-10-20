@@ -175,7 +175,7 @@ public class EditorDeTexto {
 				
 				Font fuente = new Font("Calibri", 3, 20);
 		       areaDeTexto.setFont(fuente); 
-		        areaDeTexto.setForeground(Color.BLUE);
+		       // areaDeTexto.setForeground(Color.BLUE);
 				
 			}
 		});
@@ -189,7 +189,7 @@ public class EditorDeTexto {
 				// elegimos fuente Arial
 				Font fuente = new Font("Arial", 3, 20);
 			       areaDeTexto.setFont(fuente); 
-			        areaDeTexto.setForeground(Color.RED);
+			     //   areaDeTexto.setForeground(Color.RED);
 			}
 		});
 		mntmArial.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -201,7 +201,7 @@ public class EditorDeTexto {
 				//elegimos fuente Century
 				Font fuente = new Font("Century", 3, 20);
 			       areaDeTexto.setFont(fuente); 
-			        areaDeTexto.setForeground(Color.GREEN);
+			     //   areaDeTexto.setForeground(Color.GREEN);
 				
 			}
 		});
