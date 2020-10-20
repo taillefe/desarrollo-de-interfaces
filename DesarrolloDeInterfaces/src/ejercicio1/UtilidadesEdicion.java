@@ -42,13 +42,13 @@ public class UtilidadesEdicion {
 	
 	
 	//escribirFichero()
-	public static void guardarFichero(String fichero, String texto) {
+	public static void guardarTexto(String fichero, String texto) {
 		
 		// guarda el contenido de areaDeTexto(texto) en el ficheroAbrir(fichero)
 		
 		// abro fichero para escribir para copiar el texto 
 				
-System.out.println ( "Texto : "+ texto);
+
 			try
 				{
 				FileWriter fw = new FileWriter(fichero);
