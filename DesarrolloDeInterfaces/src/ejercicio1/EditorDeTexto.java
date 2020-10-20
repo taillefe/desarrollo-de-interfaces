@@ -30,6 +30,7 @@ import java.awt.Desktop.Action;
 import java.awt.FlowLayout;
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
+import java.awt.SystemColor;
 
 public class EditorDeTexto {
 
@@ -245,7 +246,7 @@ public class EditorDeTexto {
 		pnMenus.add(toolBar, BorderLayout.SOUTH);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.ORANGE);
+		panel.setBackground(new Color(176, 196, 222));
 		toolBar.add(panel);
 		
 		JMenuItem mntmTbGuardar = new JMenuItem("");
@@ -258,37 +259,6 @@ public class EditorDeTexto {
 			}
 		});
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-		mntmTbGuardar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\guardar_18.png"));
-		panel.add(mntmTbGuardar);
-		
-	
-		
-		JMenuItem mntmTbVCortar = new JMenuItem("");
-		mntmTbVCortar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//hacer lo mismo que con la opción cortar
-				// una forma mas facil es usar el portapapeles de windows para hace la accion cortar
-				areaDeTexto.cut();
-				
-			}
-		});
-		mntmTbVCortar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\cortar_18.jpg"));
-		panel.add(mntmTbVCortar);
-		
-	
-		
-		JMenuItem mntmTbCopiar = new JMenuItem("");
-		mntmTbCopiar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				// hacer lo mismo que con la opción copiar
-				//guardar el texto seleccionardo en memoria
-				areaDeTexto.copy();
-				
-			}
-		});
-		mntmTbCopiar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\copiar_18.jpg"));
-		panel.add(mntmTbCopiar);
 		
 		
 		
@@ -306,9 +276,40 @@ public class EditorDeTexto {
 				
 			}
 		});
-		mntmTbNuevo.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\nuevo_18.png"));
+		mntmTbNuevo.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\nuevo2_30.png"));
 		mntmTbNuevo.setHorizontalAlignment(SwingConstants.LEFT);
 		panel.add(mntmTbNuevo);
+		mntmTbGuardar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\guardar2_30.png"));
+		panel.add(mntmTbGuardar);
+		
+	
+		
+		JMenuItem mntmTbVCortar = new JMenuItem("");
+		mntmTbVCortar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//hacer lo mismo que con la opción cortar
+				// una forma mas facil es usar el portapapeles de windows para hace la accion cortar
+				areaDeTexto.cut();
+				
+			}
+		});
+		mntmTbVCortar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\cortar2_30.jpg"));
+		panel.add(mntmTbVCortar);
+		
+	
+		
+		JMenuItem mntmTbCopiar = new JMenuItem("");
+		mntmTbCopiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				// hacer lo mismo que con la opción copiar
+				//guardar el texto seleccionardo en memoria
+				areaDeTexto.copy();
+				
+			}
+		});
+		mntmTbCopiar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\copiar2_30.png"));
+		panel.add(mntmTbCopiar);
 		
 		
 		
@@ -322,7 +323,7 @@ public class EditorDeTexto {
 				
 			}
 		});
-		mntmTbPegar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\pegar_18.jpg"));
+		mntmTbPegar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\pegar2_30.png"));
 		panel.add(mntmTbPegar);
 		
 		areaDeTexto = new JTextArea();
