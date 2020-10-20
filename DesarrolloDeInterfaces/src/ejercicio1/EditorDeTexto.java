@@ -27,6 +27,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Desktop.Action;
+import java.awt.FlowLayout;
+import java.awt.CardLayout;
+import java.awt.BorderLayout;
 
 public class EditorDeTexto {
 
@@ -82,13 +85,16 @@ public class EditorDeTexto {
 				}
 			}
 		});
-		frame.setBounds(100, 100, 757, 547);
+		frame.setBounds(100, 100, 683, 635);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(new BorderLayout(5, 5));
+		
+		JPanel pnMenus = new JPanel();
+		frame.getContentPane().add(pnMenus, BorderLayout.NORTH);
+		pnMenus.setLayout(new BorderLayout(0, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 731, 22);
-		frame.getContentPane().add(menuBar);
+		pnMenus.add(menuBar, BorderLayout.NORTH);
 		
 		JMenu mnFichero = new JMenu("Fichero");
 		menuBar.add(mnFichero);
@@ -236,12 +242,10 @@ public class EditorDeTexto {
 		
 		JToolBar toolBar = new JToolBar();
 		toolBar.setFloatable(false);
-		toolBar.setBounds(10, 33, 740, 34);
-		frame.getContentPane().add(toolBar);
+		pnMenus.add(toolBar, BorderLayout.SOUTH);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.ORANGE);
-		panel.setLayout(null);
 		toolBar.add(panel);
 		
 		JMenuItem mntmTbGuardar = new JMenuItem("");
@@ -253,8 +257,8 @@ public class EditorDeTexto {
 		
 			}
 		});
+		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		mntmTbGuardar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\guardar_18.png"));
-		mntmTbGuardar.setBounds(100, 0, 41, 32);
 		panel.add(mntmTbGuardar);
 		
 	
@@ -269,7 +273,6 @@ public class EditorDeTexto {
 			}
 		});
 		mntmTbVCortar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\cortar_18.jpg"));
-		mntmTbVCortar.setBounds(222, 0, 41, 32);
 		panel.add(mntmTbVCortar);
 		
 	
@@ -285,7 +288,6 @@ public class EditorDeTexto {
 			}
 		});
 		mntmTbCopiar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\copiar_18.jpg"));
-		mntmTbCopiar.setBounds(322, 0, 41, 32);
 		panel.add(mntmTbCopiar);
 		
 		
@@ -306,7 +308,6 @@ public class EditorDeTexto {
 		});
 		mntmTbNuevo.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\nuevo_18.png"));
 		mntmTbNuevo.setHorizontalAlignment(SwingConstants.LEFT);
-		mntmTbNuevo.setBounds(10, 0, 41, 32);
 		panel.add(mntmTbNuevo);
 		
 		
@@ -322,7 +323,6 @@ public class EditorDeTexto {
 			}
 		});
 		mntmTbPegar.setIcon(new ImageIcon("C:\\Users\\PC33\\Desktop\\Prueba\\iconos\\pegar_18.jpg"));
-		mntmTbPegar.setBounds(434, 0, 41, 32);
 		panel.add(mntmTbPegar);
 		
 		areaDeTexto = new JTextArea();
@@ -350,9 +350,7 @@ public class EditorDeTexto {
 				
 			}
 		});
-		
-		areaDeTexto.setBounds(10, 78, 721, 419);
-		frame.getContentPane().add(areaDeTexto);
+		frame.getContentPane().add(areaDeTexto, BorderLayout.CENTER);
 		
 		
 		
