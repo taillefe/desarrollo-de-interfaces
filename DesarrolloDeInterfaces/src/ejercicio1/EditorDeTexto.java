@@ -327,6 +327,7 @@ public class EditorDeTexto {
 		panel.add(mntmTbPegar);
 		
 		areaDeTexto = new JTextArea();
+		areaDeTexto.setFont(new Font("Monospaced", Font.PLAIN, 16));
 		// donde se crea la variable areaDeTexto como objeto de JTextArea se 
 		// abre un escuchador que en caso de borrado, insertado o cambio hace un
 		// cambio en la variable booleana cambios
