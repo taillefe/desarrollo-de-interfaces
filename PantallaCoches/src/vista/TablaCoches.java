@@ -68,11 +68,12 @@ public class TablaCoches {
 	
 	
 	//aquí defino metodos propios
+	// metodo para llenar la lista de coches
 	 public ArrayList<Coche> obtenerCoches() {
-		 ArrayList<Coche> lista= new ArrayList<>();
-		 Coche car = new Coche("Renault","Cinco","verde","1234",1980);
-	
 		 
+		 ArrayList<Coche> lista= new ArrayList<>();
+	
+		 Coche car = new Coche("Renault","Cinco","verde","1234",1980);
 		 lista.add( car);
 		 car = new Coche("Citroen","C2","rojo","5678",2000);
 		 lista.add(car);
