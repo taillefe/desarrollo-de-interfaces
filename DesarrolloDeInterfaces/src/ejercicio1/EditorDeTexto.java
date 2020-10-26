@@ -13,15 +13,24 @@ import javax.swing.JToolBar;
 import javax.swing.ActionMap;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.DefaultEditorKit;
+
+import java.awt.Toolkit;
+import java.awt.Window;
+import java.awt.Image;
+
+
 import javax.swing.JFileChooser;
 import javax.swing.JTextPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.net.URL;
 import java.util.HashMap;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -31,11 +40,15 @@ import java.awt.FlowLayout;
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
 import java.awt.SystemColor;
-
+/**
+ * 
+ * @author Laura
+ *
+ */
 public class EditorDeTexto {
 
 
-	//definicion de variables
+		//definicion de variables
 		String ficheroAbierto = ""; // la primera vez ficheroAbierto está vacío
 		private JTextArea areaDeTexto;
 		Boolean cambios = false;  // para controlar que ha habido cambios en el JTextArea
@@ -49,6 +62,7 @@ public class EditorDeTexto {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -390,7 +404,7 @@ public class EditorDeTexto {
 	public void guardarFichero() {
 		
 		System.out.println ( "guardarFichero : "+ ficheroAbierto);
-		//Guardar el contenido de JTextArea en el ficheroAbierot, 
+		//Guardar el contenido de JTextArea en el ficheroAbiero, 
 		// en caso de no existir debemos llamar a guardarComo
 		if (ficheroAbierto.equals("")) {
 				guardarFicheroComo();
