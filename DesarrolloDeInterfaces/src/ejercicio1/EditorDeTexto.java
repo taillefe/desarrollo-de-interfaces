@@ -42,9 +42,11 @@ import java.awt.BorderLayout;
 import java.awt.SystemColor;
 /**
  * 
- * @author Laura
+ * @author Laura García Taillefert
  *
  */
+
+// Interface del editor de texto
 public class EditorDeTexto {
 
 
@@ -52,10 +54,7 @@ public class EditorDeTexto {
 		String ficheroAbierto = ""; // la primera vez ficheroAbierto está vacío
 		private JTextArea areaDeTexto;
 		Boolean cambios = false;  // para controlar que ha habido cambios en el JTextArea
-	
-		
-		
-	
+
 	private JFrame frame;
 	
 	/**
@@ -93,6 +92,7 @@ public class EditorDeTexto {
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			//evento que se ejecuta cuando cerramos la ventana
+			//confirmar que queremos cerrarla
 			public void windowClosing(WindowEvent e) {
 				int res = JOptionPane.showConfirmDialog(null, "Cerrar?");
 				if (res==JFileChooser.APPROVE_OPTION) {
@@ -131,8 +131,8 @@ public class EditorDeTexto {
 		});
 		mnFichero.add(mntmNuevo);
 		
-		// limpiar JTextArea
-		//crear un fichero nuevo en el que se graba lo que aparece en JTextArea
+		
+		//crear un fichero nuevo en el que se va a grabar lo que aparece en JTextArea
 		
 		JMenuItem mntmAbrir = new JMenuItem("Abrir");
 		mntmAbrir.addActionListener(new ActionListener() {
