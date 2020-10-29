@@ -114,36 +114,36 @@ public class EditorDeTexto {
 		JMenu mnFichero = new JMenu("Fichero");
 		menuBar.add(mnFichero);
 		
+		//crear un fichero nuevo en el que se va a grabar lo que aparece en JTextArea
 		JMenuItem mntmNuevo = new JMenuItem("Nuevo");
 		mntmNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				//aqui se abre un JTextArea nueva vacía y en ficheroAbierto borrar valor anterior 
-				//comprobar antes que no ha habido un cambio en la anterior pantalla que se deba guardar
+				
+				//comprobar antes que no ha habido un cambio que queramos guardar, con la variable cambios
 				if (cambios) {
-					
+					// si ha habido cambios preguntar si se quieren guardar
 					guardarCambios();
 					
 				}
+				//aqui se abre un JTextArea nueva vacía y se usa ficheroAbierto para  guardar lo que tenemos por pantalla 
 				nuevoFichero();
 				
 			}
 		});
 		mnFichero.add(mntmNuevo);
 		
-		
-		//crear un fichero nuevo en el que se va a grabar lo que aparece en JTextArea
-		
 		JMenuItem mntmAbrir = new JMenuItem("Abrir");
 		mntmAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				//comprobar antes que no ha habido un cambio en la anterior pantalla que se deba guardar
+				//la comprobacion de los cambios se hace tambien antes de abrir un fichero nuevo
 				if (cambios) {
 					
 					guardarCambios();
 					
 				}
+				// aquí se abre un fichero y se vuelca su contenido en la pantalla
 				abrirFichero();
 					
 			}
@@ -154,7 +154,7 @@ public class EditorDeTexto {
 		JMenuItem mntmGuardar = new JMenuItem("Guardar");
 		mntmGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				// guarda el contenido de la pantalla en un fichero
 				guardarFichero();
 				
 			}
@@ -166,7 +166,7 @@ public class EditorDeTexto {
 		JMenuItem mntmGuardarComo = new JMenuItem("GuardarComo");
 		mntmGuardarComo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				// guarda el contenido de la pantalla en un fichero que se escoge
 				guardarFicheroComo();
 				
 			}
@@ -186,8 +186,8 @@ public class EditorDeTexto {
 		JMenuItem mntmCalibri = new JMenuItem("Calibri");
 		mntmCalibri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//elegimos funete Calibri
 				
+				//elegimos funete Calibri
 				Font fuente = new Font("Calibri", 3, 20);
 		       areaDeTexto.setFont(fuente); 
 		       // areaDeTexto.setForeground(Color.BLUE);
@@ -204,7 +204,7 @@ public class EditorDeTexto {
 				// elegimos fuente Arial
 				Font fuente = new Font("Arial", 3, 20);
 			       areaDeTexto.setFont(fuente); 
-			     //   areaDeTexto.setForeground(Color.RED);
+			     // areaDeTexto.setForeground(Color.RED);
 			}
 		});
 		mntmArial.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -226,10 +226,7 @@ public class EditorDeTexto {
 		JMenuItem mntmCortar = new JMenuItem("Cortar");
 		mntmCortar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				//primero seleccionamos texto para, despues de pulsar este boton, cortarlo, pero dejarlo en memoria
-				//cared.selectText para seleccionar el texto
-				// una forma mas facil es usar el portapapeles de windows para hace la accion cortar
+				// usa el portapapeles de windows para hace la accion cortar
 				areaDeTexto.cut();
 			}
 		});
@@ -239,7 +236,7 @@ public class EditorDeTexto {
 		mntmCopiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				//guardar el texto seleccionardo en memoria
+				//guarda el texto seleccionardo en memoria
 				areaDeTexto.copy();
 			}
 		});
@@ -248,7 +245,7 @@ public class EditorDeTexto {
 		JMenuItem mntmPegar = new JMenuItem("Pegar");
 		mntmPegar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// copiar en JTextArea el texto guardado en memoria
+				// copia en JTextArea el texto guardado en memoria
 				areaDeTexto.paste();
 				
 			}
@@ -266,8 +263,7 @@ public class EditorDeTexto {
 		JMenuItem mntmTbGuardar = new JMenuItem("");
 		mntmTbGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// hacer lo mismo que con la opción guardarFichero
-				
+				// opcion guardar
 				guardarFichero();
 		
 			}
@@ -279,8 +275,7 @@ public class EditorDeTexto {
 		JMenuItem mntmTbNuevo = new JMenuItem("");
 		mntmTbNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//hacer lo mismo que con la opción nuevo
-				
+				//opcion nuevo
 				if (cambios) {
 					
 					guardarCambios();
@@ -301,8 +296,7 @@ public class EditorDeTexto {
 		JMenuItem mntmTbVCortar = new JMenuItem("");
 		mntmTbVCortar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//hacer lo mismo que con la opción cortar
-				// una forma mas facil es usar el portapapeles de windows para hace la accion cortar
+				// usa el portapapeles de windows para hace la accion cortar
 				areaDeTexto.cut();
 				
 			}
@@ -316,8 +310,7 @@ public class EditorDeTexto {
 		mntmTbCopiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				// hacer lo mismo que con la opción copiar
-				//guardar el texto seleccionardo en memoria
+				//guarda el texto seleccionardo en memoria
 				areaDeTexto.copy();
 				
 			}
@@ -331,8 +324,7 @@ public class EditorDeTexto {
 		mntmTbPegar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				// hacer lo mismo que con la opción pegar
-				// copiar en JTextArea el texto guardado en memoria
+				// copia en JTextArea el texto guardado en memoria
 				areaDeTexto.paste();
 				
 			}
@@ -342,6 +334,7 @@ public class EditorDeTexto {
 		
 		areaDeTexto = new JTextArea();
 		areaDeTexto.setFont(new Font("Monospaced", Font.PLAIN, 16));
+		
 		// donde se crea la variable areaDeTexto como objeto de JTextArea se 
 		// abre un escuchador que en caso de borrado, insertado o cambio hace un
 		// cambio en la variable booleana cambios
@@ -368,14 +361,12 @@ public class EditorDeTexto {
 		});
 		frame.getContentPane().add(areaDeTexto, BorderLayout.CENTER);
 		
-		
-		
 	}
 	
 	
-	//Metodos para abrirFichero, guardarFichero, guardarComo
+	//Metodos para nuevoFichero, abrirFichero, guardarFichero, guardarFicheroComo
 	
-	
+	// nuevoFichero inicializa la variable ficheroAbierto 
 	public void nuevoFichero() {
 			areaDeTexto.setText("");
 			ficheroAbierto = "";
@@ -383,6 +374,7 @@ public class EditorDeTexto {
 
 	}
 	
+	//abrirFichero permite escoger un fichero del disco desde un directorio predeterminado
 	public void abrirFichero() {
 	
 			//  ventana abierta en un filechooser
@@ -391,21 +383,23 @@ public class EditorDeTexto {
 			
 				int valorDevuelto = ficheroEscogido.showOpenDialog(null);
 				
+				// si presionamos el boton aceptar, el contenido del fichero elegido pasa a ser ficheroAbierto
 				if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
 					ficheroAbierto = (ficheroEscogido.getSelectedFile().getAbsolutePath());
-					System.out.println("fichero escogido : " + ficheroAbierto);
-					
-					areaDeTexto.setText(UtilidadesEdicion.obtenerTexto(ficheroAbierto));
+	
 					//leo el texto que hay en el fichero y lo escribo en la ventana en text area
-					cambios = false;  //con solo abrir el fichero no debería actualizarse la variable cambios a true
+					areaDeTexto.setText(UtilidadesEdicion.obtenerTexto(ficheroAbierto));
+					
+					 //con solo abrir el fichero no debería actualizarse la variable cambios a true
+					cambios = false; 
 				}
 	}
 	
+	//guardarFichero 
 	public void guardarFichero() {
 		
-		System.out.println ( "guardarFichero : "+ ficheroAbierto);
 		//Guardar el contenido de JTextArea en el ficheroAbiero, 
-		// en caso de no existir debemos llamar a guardarComo
+		// en caso de no existir debemos llamar a guardarFicheroComo
 		if (ficheroAbierto.equals("")) {
 				guardarFicheroComo();
 			
@@ -413,18 +407,18 @@ public class EditorDeTexto {
 			String texto = areaDeTexto.getText();
 		
 			// texto lo guardamos en el fichero abierto
-		
 			UtilidadesEdicion.guardarTexto(ficheroAbierto, texto);
-			cambios = false;  // actualizar a false los cambios despues de hacer un guardado
+			
+			// actualizar a false los cambios despues de hacer un guardado
+			cambios = false;  
 		}
 					
 	}
 	
+	//guardarFicheroComo
 	public void guardarFicheroComo() {
 		
 		// Guardar el contenido de JTextArea en un fichero que elegimos con JFileChooser
-
-
 		JFileChooser ficheroEscogido = new JFileChooser("C:\\Users\\PC33\\Desktop\\Prueba");
 		ficheroEscogido.setBounds(0, 0, 497, 333);
 
@@ -432,15 +426,16 @@ public class EditorDeTexto {
 		
 		if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
 			ficheroAbierto = (ficheroEscogido.getSelectedFile().getAbsolutePath());
-			System.out.println("guardarFicheroComo : " + ficheroAbierto);
-			
+				
 			String texto = areaDeTexto.getText();
 			UtilidadesEdicion.guardarTexto(ficheroAbierto, texto);
-			cambios = false;  // actualizar a false los cambios despues de hacer un guardado
+			// actualizar a false los cambios despues de hacer un guardado
+			cambios = false;  
 		}
 		
 	}
 	
+	//guardarCambios
 	public void guardarCambios() {
 	
 			// preguntar si queremos guardar los cambios con un guardar
