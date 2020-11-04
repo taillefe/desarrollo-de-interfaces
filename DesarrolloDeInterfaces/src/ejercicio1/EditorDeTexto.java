@@ -285,10 +285,10 @@ public class EditorDeTexto {
 				
 			}
 		});
-		mntmTbNuevo.setIcon(new ImageIcon("C:\\Users\\PC33\\git\\desarrollo-de-interfaces\\DesarrolloDeInterfaces\\images\\nuevo2_30.png"));
+		mntmTbNuevo.setIcon(new ImageIcon(EditorDeTexto.class.getResource("/img/nuevo2_30.png")));
 		mntmTbNuevo.setHorizontalAlignment(SwingConstants.LEFT);
 		panel.add(mntmTbNuevo);
-		mntmTbGuardar.setIcon(new ImageIcon("C:\\Users\\PC33\\git\\desarrollo-de-interfaces\\DesarrolloDeInterfaces\\images\\guardar2_30.png"));
+		mntmTbGuardar.setIcon(new ImageIcon(EditorDeTexto.class.getResource("/img/guardar2_30.png")));
 		panel.add(mntmTbGuardar);
 		
 	
@@ -301,7 +301,7 @@ public class EditorDeTexto {
 				
 			}
 		});
-		mntmTbVCortar.setIcon(new ImageIcon("C:\\Users\\PC33\\git\\desarrollo-de-interfaces\\DesarrolloDeInterfaces\\images\\cortar2_30.jpg"));
+		mntmTbVCortar.setIcon(new ImageIcon(EditorDeTexto.class.getResource("/img/cortar2_30.jpg")));
 		panel.add(mntmTbVCortar);
 		
 	
@@ -315,7 +315,7 @@ public class EditorDeTexto {
 				
 			}
 		});
-		mntmTbCopiar.setIcon(new ImageIcon("C:\\Users\\PC33\\git\\desarrollo-de-interfaces\\DesarrolloDeInterfaces\\images\\copiar2_30.png"));
+		mntmTbCopiar.setIcon(new ImageIcon(EditorDeTexto.class.getResource("/img/copiar2_30.png")));
 		panel.add(mntmTbCopiar);
 		
 		
@@ -329,7 +329,7 @@ public class EditorDeTexto {
 				
 			}
 		});
-		mntmTbPegar.setIcon(new ImageIcon("C:\\Users\\PC33\\git\\desarrollo-de-interfaces\\DesarrolloDeInterfaces\\images\\pegar2_30.png"));
+		mntmTbPegar.setIcon(new ImageIcon(EditorDeTexto.class.getResource("/img/pegar2_30.png")));
 		panel.add(mntmTbPegar);
 		
 		areaDeTexto = new JTextArea();
