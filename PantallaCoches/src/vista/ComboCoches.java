@@ -11,10 +11,12 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
+import javax.swing.JList;
+import javax.swing.ListSelectionModel;
 
 public class ComboCoches {
 
-	private JFrame frame;
+	private JFrame ventana3;
 
 	/**
 	 * Launch the application.
@@ -24,7 +26,7 @@ public class ComboCoches {
 			public void run() {
 				try {
 					ComboCoches window = new ComboCoches();
-					window.frame.setVisible(true);
+					window.ventana3.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,15 +45,23 @@ public class ComboCoches {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(ComboCoches.class.getResource("/img2/avatarlaura.jpg")));
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ventana3 = new JFrame();
+		ventana3.setIconImage(Toolkit.getDefaultToolkit().getImage(ComboCoches.class.getResource("/img2/avatarlaura.jpg")));
+		ventana3.setBounds(100, 100, 450, 300);
+		ventana3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JComboBox cbCoches = new JComboBox();
+		
+		TablaCoches tbCoches = new TablaCoches();
 		cbCoches.setEditable(true);
-		cbCoches.setModel(new DefaultComboBoxModel<Coche>(TablaCoches.obtenerCoches().toArray(new Coche[0])));
-		frame.getContentPane().add(cbCoches, BorderLayout.NORTH);
+		cbCoches.setModel(new DefaultComboBoxModel<Coche>(tbCoches.obtenerCoches().toArray(new Coche[0])));
+		ventana3.getContentPane().add(cbCoches, BorderLayout.NORTH);
+		
+		JList lstCoches = new JList();
+		lstCoches.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		lstCoches.setModel(new CocheListModel(tbCoches.obtenerCoches()));
+		lstCoches.setCellRenderer(new RenderizadorListaCoches());
+		ventana3.getContentPane().add(lstCoches, BorderLayout.CENTER);
 	}
 
 }

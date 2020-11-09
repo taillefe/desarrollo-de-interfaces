@@ -48,9 +48,10 @@ public class Coche {
 	}
 	@Override
 	public String toString() {
-		return "Coche [marca=" + marca + ", modelo=" + modelo + ", color=" + color + ", matrícula=" + matrícula
-				+ "]";
+	//	return "Coche [marca=" + marca + ", modelo=" + modelo + ", color=" + color + ", matrícula=" + matrícula
+	//			+ "]";
 			//	+ ", anoFabricacion=" + anoFabricacion + "]";
+		return " "+ marca+ " ";
 	}
 	
 

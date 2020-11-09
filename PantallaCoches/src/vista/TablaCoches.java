@@ -16,11 +16,17 @@ import javax.swing.JScrollPane;
 import java.awt.Toolkit;
 import java.awt.Dimension;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TablaCoches {
 
-	private JFrame frame;
+	private JFrame ventana1;
 	private JTable tbCoches;
+	private JButton btnNuevo;
+	
+	ArrayList<Coche> lista= new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -30,7 +36,7 @@ public class TablaCoches {
 			public void run() {
 				try {
 					TablaCoches window = new TablaCoches();
-					window.frame.setVisible(true);
+					window.ventana1.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -42,6 +48,8 @@ public class TablaCoches {
 	 * Create the application.
 	 */
 	public TablaCoches() {
+		
+		
 		initialize();
 	}
 
@@ -49,11 +57,11 @@ public class TablaCoches {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setMinimumSize(new Dimension(500, 250));
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(TablaCoches.class.getResource("/img2/avatarlaura.jpg")));
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ventana1 = new JFrame();
+		ventana1.setMinimumSize(new Dimension(500, 250));
+		ventana1.setIconImage(Toolkit.getDefaultToolkit().getImage(TablaCoches.class.getResource("/img2/avatarlaura.jpg")));
+		ventana1.setBounds(100, 100, 450, 300);
+		ventana1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Asignación del modelo a la tabla
 		
@@ -61,7 +69,7 @@ public class TablaCoches {
 		
 		JScrollPane spCoches = new JScrollPane();
 		spCoches.setBounds(0, 0,594,299);
-		frame.getContentPane().add(spCoches, BorderLayout.EAST);
+		ventana1.getContentPane().add(spCoches, BorderLayout.EAST);
 		
 		tbCoches = new JTable();
 		tbCoches.setAutoCreateRowSorter(true);
@@ -75,15 +83,26 @@ public class TablaCoches {
 	//	tbCoches.setFillsViewportHeight(true);
 	//	scrollPane.setColumnHeaderView(tbCoches);
 		spCoches.setViewportView(tbCoches);
-	//	frame.getContentPane().add(tbCoches, BorderLayout.CENTER);
+		
+		btnNuevo = new JButton("New button");
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			// al pulsar el botón, este nos llevará a una pantalla nueva 
+			// donde introducir nuevos coches
+				
+			}
+		});
+		spCoches.setColumnHeaderView(btnNuevo);
+	//	ventana1.getContentPane().add(tbCoches, BorderLayout.CENTER);
 	}
 	
 	
 	//aquí defino metodos propios
 	// metodo para llenar la lista de coches
-	 public static ArrayList<Coche> obtenerCoches() {
+	 public  ArrayList<Coche> obtenerCoches() {
 		 
-		 ArrayList<Coche> lista= new ArrayList<>();
+	//	 ArrayList<Coche> lista= new ArrayList<>();
 	
 		 Coche car = new Coche("Renault","Cinco","verde","1234",1980);
 		 lista.add( car);
@@ -93,38 +112,7 @@ public class TablaCoches {
 		 lista.add(car);
 		 car = new Coche("Nissan","Cascai","azul","8765",2010);
 		 lista.add(car);
-		 car = new Coche("Renault","Cinco","verde","1234",1980);
-		 lista.add( car);
-		 car = new Coche("Citroen","C2","rojo","5678",2000);
-		 lista.add(car);
-		 car = new Coche("Audi","A1","amarillo","4321",1999);
-		 lista.add(car);
-		 car = new Coche("Nissan","Cascai","azul","8765",2010);
-		 lista.add(car);
-		 car = new Coche("Renault","Cinco","verde","1234",1980);
-		 lista.add( car);
-		 car = new Coche("Citroen","C2","rojo","5678",2000);
-		 lista.add(car);
-		 car = new Coche("Audi","A1","amarillo","4321",1999);
-		 lista.add(car);
-		 car = new Coche("Nissan","Cascai","azul","8765",2010);
-		 lista.add(car);
-		 car = new Coche("Renault","Cinco","verde","1234",1980);
-		 lista.add( car);
-		 car = new Coche("Citroen","C2","rojo","5678",2000);
-		 lista.add(car);
-		 car = new Coche("Audi","A1","amarillo","4321",1999);
-		 lista.add(car);
-		 car = new Coche("Nissan","Cascai","azul","8765",2010);
-		 lista.add(car);
-		 car = new Coche("Renault","Cinco","verde","1234",1980);
-		 lista.add( car);
-		 car = new Coche("Citroen","C2","rojo","5678",2000);
-		 lista.add(car);
-		 car = new Coche("Audi","A1","amarillo","4321",1999);
-		 lista.add(car);
-		 car = new Coche("Nissan","Cascai","azul","8765",2010);
-		 lista.add(car);
+		
 		 
 		 System.out.println ("Lista de coches" + lista);
 		 
