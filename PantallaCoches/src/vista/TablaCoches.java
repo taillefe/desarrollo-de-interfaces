@@ -24,9 +24,9 @@ public class TablaCoches {
 
 	private JFrame ventana1;
 	private JTable tbCoches;
-	private JButton btnNuevo;
 	
 	ArrayList<Coche> lista= new ArrayList<>();
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -48,8 +48,6 @@ public class TablaCoches {
 	 * Create the application.
 	 */
 	public TablaCoches() {
-		
-		
 		initialize();
 	}
 
@@ -65,46 +63,72 @@ public class TablaCoches {
 		
 		//Asignación del modelo a la tabla
 		
-		ArrayList<Coche> lista =obtenerCoches();
+		crearListaCoches();
 		
 		JScrollPane spCoches = new JScrollPane();
 		spCoches.setBounds(0, 0,594,299);
-		ventana1.getContentPane().add(spCoches, BorderLayout.EAST);
+		ventana1.getContentPane().add(spCoches, BorderLayout.CENTER);
 		
 		tbCoches = new JTable();
-		tbCoches.setAutoCreateRowSorter(true);
-		tbCoches.setFillsViewportHeight(true);
+	//	tbCoches.setFillsViewportHeight(true);
+		
 		tbCoches.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 2));
 		tbCoches.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tbCoches.setBounds(60,23,506,209);
 		//aqui se asigna la listaTableModel a la tabla
 		tbCoches.setModel(new CocheTableModel(lista));
 			
-	//	tbCoches.setFillsViewportHeight(true);
-	//	scrollPane.setColumnHeaderView(tbCoches);
+		tbCoches.setFillsViewportHeight(true);
+		spCoches.setColumnHeaderView(tbCoches);
 		spCoches.setViewportView(tbCoches);
+		tbCoches.setAutoCreateRowSorter(true);
 		
-		btnNuevo = new JButton("New button");
-		btnNuevo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			// al pulsar el botón, este nos llevará a una pantalla nueva 
-			// donde introducir nuevos coches
-				
+		btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// aqui se hace la llamada a DialogoNuevoCoche
+				// pasandole la lista de los coches donde hay que añadir uno nuevo
+				DialogoNuevoCoche dialogoNuevoCoche = new DialogoNuevoCoche();
+				dialogoNuevoCoche.setVisible(true);
+				lista.add(dialogoNuevoCoche.obtenerCocheEnEdicion());
 			}
 		});
-		spCoches.setColumnHeaderView(btnNuevo);
+		ventana1.getContentPane().add(btnNewButton, BorderLayout.SOUTH);
 	//	ventana1.getContentPane().add(tbCoches, BorderLayout.CENTER);
 	}
 	
 	
 	//aquí defino metodos propios
 	// metodo para llenar la lista de coches
-	 public  ArrayList<Coche> obtenerCoches() {
+	 public  ArrayList<Coche> crearListaCoches() {
 		 
 	//	 ArrayList<Coche> lista= new ArrayList<>();
 	
 		 Coche car = new Coche("Renault","Cinco","verde","1234",1980);
+		 lista.add( car);
+		 car = new Coche("Citroen","C2","rojo","5678",2000);
+		 lista.add(car);
+		 car = new Coche("Audi","A1","amarillo","4321",1999);
+		 lista.add(car);
+		 car = new Coche("Nissan","Cascai","azul","8765",2010);
+		 lista.add(car);
+		 car = new Coche("Renault","Cinco","verde","1234",1980);
+		 lista.add( car);
+		 car = new Coche("Citroen","C2","rojo","5678",2000);
+		 lista.add(car);
+		 car = new Coche("Audi","A1","amarillo","4321",1999);
+		 lista.add(car);
+		 car = new Coche("Nissan","Cascai","azul","8765",2010);
+		 lista.add(car);
+		 car = new Coche("Renault","Cinco","verde","1234",1980);
+		 lista.add( car);
+		 car = new Coche("Citroen","C2","rojo","5678",2000);
+		 lista.add(car);
+		 car = new Coche("Audi","A1","amarillo","4321",1999);
+		 lista.add(car);
+		 car = new Coche("Nissan","Cascai","azul","8765",2010);
+		 lista.add(car);
+		 car = new Coche("Renault","Cinco","verde","1234",1980);
 		 lista.add( car);
 		 car = new Coche("Citroen","C2","rojo","5678",2000);
 		 lista.add(car);

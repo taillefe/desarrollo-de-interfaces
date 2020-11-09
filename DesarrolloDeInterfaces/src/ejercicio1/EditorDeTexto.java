@@ -40,6 +40,9 @@ import java.awt.FlowLayout;
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
 import java.awt.SystemColor;
+import java.awt.Dimension;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 /**
  * 
  * @author Laura García Taillefert
@@ -52,10 +55,10 @@ public class EditorDeTexto {
 
 		//definicion de variables
 		String ficheroAbierto = ""; // la primera vez ficheroAbierto está vacío
-		private JTextArea areaDeTexto;
 		Boolean cambios = false;  // para controlar que ha habido cambios en el JTextArea
 
 	private JFrame frame;
+	private JTextArea areaDeTexto;
 	
 	/**
 	 * Launch the application.
@@ -89,6 +92,7 @@ public class EditorDeTexto {
 		
 		
 		frame = new JFrame();
+		frame.setMinimumSize(new Dimension(500, 500));
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			//evento que se ejecuta cuando cerramos la ventana
@@ -228,6 +232,7 @@ public class EditorDeTexto {
 			public void actionPerformed(ActionEvent arg0) {
 				// usa el portapapeles de windows para hace la accion cortar
 				areaDeTexto.cut();
+				mntmCortar.setToolTipText("Cortar");
 			}
 		});
 		mnEditor.add(mntmCortar);
@@ -261,6 +266,7 @@ public class EditorDeTexto {
 		toolBar.add(panel);
 		
 		JMenuItem mntmTbGuardar = new JMenuItem("");
+		mntmTbGuardar.setToolTipText("Guardar");
 		mntmTbGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// opcion guardar
@@ -273,6 +279,7 @@ public class EditorDeTexto {
 		
 		
 		JMenuItem mntmTbNuevo = new JMenuItem("");
+		mntmTbNuevo.setToolTipText("Nuevo");
 		mntmTbNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//opcion nuevo
@@ -294,6 +301,8 @@ public class EditorDeTexto {
 	
 		
 		JMenuItem mntmTbVCortar = new JMenuItem("");
+		
+		mntmTbVCortar.setToolTipText("Cortar");
 		mntmTbVCortar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// usa el portapapeles de windows para hace la accion cortar
@@ -307,6 +316,7 @@ public class EditorDeTexto {
 	
 		
 		JMenuItem mntmTbCopiar = new JMenuItem("");
+		mntmTbCopiar.setToolTipText("Copiar");
 		mntmTbCopiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -321,6 +331,7 @@ public class EditorDeTexto {
 		
 		
 		JMenuItem mntmTbPegar = new JMenuItem("");
+		mntmTbPegar.setToolTipText("Pegar");
 		mntmTbPegar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -332,34 +343,13 @@ public class EditorDeTexto {
 		mntmTbPegar.setIcon(new ImageIcon(EditorDeTexto.class.getResource("/img/pegar2_30.png")));
 		panel.add(mntmTbPegar);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
+		
 		areaDeTexto = new JTextArea();
 		areaDeTexto.setFont(new Font("Monospaced", Font.PLAIN, 16));
-		
-		// donde se crea la variable areaDeTexto como objeto de JTextArea se 
-		// abre un escuchador que en caso de borrado, insertado o cambio hace un
-		// cambio en la variable booleana cambios
-		
-		areaDeTexto.getDocument().addDocumentListener(new DocumentListener() {
-			
-			@Override
-			public void removeUpdate(DocumentEvent arg0) {
-				cambios = true;
-				
-			}
-			
-			@Override
-			public void insertUpdate(DocumentEvent arg0) {
-				cambios = true;
-				
-			}
-			
-			@Override
-			public void changedUpdate(DocumentEvent arg0) {
-				cambios = true;
-				
-			}
-		});
-		frame.getContentPane().add(areaDeTexto, BorderLayout.CENTER);
+		scrollPane.setViewportView(areaDeTexto);
+		//frame.getContentPane().add(areaDeTexto, BorderLayout.CENTER);
 		
 	}
 	

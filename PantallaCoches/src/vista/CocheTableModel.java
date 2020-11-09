@@ -19,9 +19,13 @@ public class CocheTableModel extends AbstractTableModel {
 		return false;
 	}
 
-	public String getColumName (int col) {
+	@Override
+	public String getColumnName(int col) {
 		return columnas[col];
 	}
+
+	
+	
 	
 	@Override
 	public int getRowCount() {

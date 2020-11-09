@@ -52,14 +52,14 @@ public class ComboCoches {
 		
 		JComboBox cbCoches = new JComboBox();
 		
-		TablaCoches tbCoches = new TablaCoches();
+		DialogoNuevoCoche dCoches = new DialogoNuevoCoche();
 		cbCoches.setEditable(true);
-		cbCoches.setModel(new DefaultComboBoxModel<Coche>(tbCoches.obtenerCoches().toArray(new Coche[0])));
+		//cbCoches.setModel(new DefaultComboBoxModel<Coche>(dCoches.obtenerCoches().toArray(new Coche[0])));
 		ventana3.getContentPane().add(cbCoches, BorderLayout.NORTH);
 		
 		JList lstCoches = new JList();
 		lstCoches.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		lstCoches.setModel(new CocheListModel(tbCoches.obtenerCoches()));
+		//lstCoches.setModel(new CocheListModel(dCoches.obtenerCoches()));
 		lstCoches.setCellRenderer(new RenderizadorListaCoches());
 		ventana3.getContentPane().add(lstCoches, BorderLayout.CENTER);
 	}
