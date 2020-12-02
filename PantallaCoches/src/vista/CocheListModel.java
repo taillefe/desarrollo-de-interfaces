@@ -16,6 +16,10 @@ public class CocheListModel extends AbstractListModel<Coche>{
 		listaCoches = coches;
 	}
 	
+//	public CocheListModel(Coche obtenerCocheEnEdicion) {
+//		// TODO Auto-generated constructor stub
+//	}
+
 	@Override
 	public Coche getElementAt(int index) {
 		Coche coch = listaCoches.get(index);

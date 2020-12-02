@@ -83,7 +83,7 @@ public class TablaCoches {
 		spCoches.setViewportView(tbCoches);
 		tbCoches.setAutoCreateRowSorter(true);
 		
-		btnNewButton = new JButton("New button");
+		btnNewButton = new JButton("Nuevo Coche");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// aqui se hace la llamada a DialogoNuevoCoche

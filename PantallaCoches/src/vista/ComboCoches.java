@@ -51,15 +51,15 @@ public class ComboCoches {
 		ventana3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JComboBox cbCoches = new JComboBox();
-		
+		TablaCoches tCoches = new TablaCoches();
 		DialogoNuevoCoche dCoches = new DialogoNuevoCoche();
 		cbCoches.setEditable(true);
-		//cbCoches.setModel(new DefaultComboBoxModel<Coche>(dCoches.obtenerCoches().toArray(new Coche[0])));
+		cbCoches.setModel(new DefaultComboBoxModel<Coche>());
 		ventana3.getContentPane().add(cbCoches, BorderLayout.NORTH);
 		
 		JList lstCoches = new JList();
 		lstCoches.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		//lstCoches.setModel(new CocheListModel(dCoches.obtenerCoches()));
+		lstCoches.setModel(new CocheListModel(tCoches.crearListaCoches()));
 		lstCoches.setCellRenderer(new RenderizadorListaCoches());
 		ventana3.getContentPane().add(lstCoches, BorderLayout.CENTER);
 	}
